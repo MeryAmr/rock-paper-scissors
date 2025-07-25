@@ -17,12 +17,19 @@ const colorMapping = {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOMContentLoaded - JS is working');
     loadGameState();
-    if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-        console.log('Initializing main page');
-        initializeMainPage();
-    } else if (window.location.pathname.includes('result.html')) {
-        console.log('Initializing result page');
-        initializeResultPage();
+    const pageId = document.body.id;
+
+    switch (pageId) {
+        case 'home':
+            console.log('Initializing main page');
+            initializeMainPage();
+            break;
+        case 'result':
+            console.log('Initializing result page');
+            initializeResultPage();
+            break;
+        default:
+            console.warn('Unknown page id:', pageId);
     }
 });
 
